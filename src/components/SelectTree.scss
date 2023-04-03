@@ -1,0 +1,26 @@
+.select-tree {
+  .ant-modal-body {
+    display: flex;
+    justify-content: space-between;
+    .dm-tree,
+    .bc-tree {
+      background-color: #141414;
+      box-sizing: border-box;
+      padding: 8px;
+      height: 100%;
+      width: calc(50% - 10px);
+      border-radius: 6px;
+      .ant-tree-node-selected {
+        background-color: #bc4444;
+      }
+    }
+
+    .tree-header {
+      display: flex;
+      justify-content:space-between;
+      align-items: center;
+      border-bottom: 1px solid #686868;
+      padding-bottom: 8px;
+    }
+  }
+}

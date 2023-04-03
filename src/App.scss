@@ -1,0 +1,102 @@
+#root {
+  width: 100%;
+  height: 100%;
+}
+.app {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  .container {
+    width: 100%;
+    height: calc(100% - 56px);
+    position: relative;
+    &__canvas {
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      overflow: hidden;
+      transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+    }
+    &__cover {
+      height: 100%;
+      text-align: center;
+      &--image {
+        height: 100%;
+        opacity: 0.36;
+        width: auto !important;
+      }
+    }
+    .ant-carousel {
+      height: 100%;
+      .slick-slider {
+        height: 100%;
+        .slick-list {
+          height: 100% !important;
+          .slick-track {
+            height: 100% !important;
+            .slick-slide {
+              height: 100% !important;
+              div {
+                height: 100% !important;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .footer {
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 0 20px;
+    border-top: 1px solid #ee5a5a73;
+    .ant-btn {
+      margin-right: 12px;
+    }
+    .audio-title {
+      font-size: 13px;
+      max-width: 360px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  .css-optimize {
+    will-change: transform, left, top;
+  }
+  .cmt {
+    color: #fff;
+    font-family: 'Yuanti SC Regular', 'PingFang TC', SimHei, SimSun, Heiti, 'MS Mincho', 'Meiryo', 'Microsoft YaHei', monospace;
+    font-size: 18px !important;
+    letter-spacing: 0;
+    line-height: 100%;
+    margin: 0;
+    padding: 3px 0 0 0;
+    position: absolute;
+    text-decoration: none;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    -webkit-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+    text-size-adjust: none;
+    -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+    -webkit-transform-origin: 0% 0%;
+    -ms-transform-origin: 0% 0%;
+    transform-origin: 0% 0%;
+    white-space: pre;
+    word-break: keep-all;
+  }
+
+  audio {
+    width: calc(100% - 400px);
+    max-width: 1000px;
+    height: 44px;
+  }
+}
