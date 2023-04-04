@@ -1,28 +1,28 @@
 import { message, Modal } from 'antd';
-import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
-import DmTree from './DmTree';
-import BcTree from './BcTree';
-import './SelectTree.scss';
+import { forwardRef, useImperativeHandle, useRef, useState } from 'react';
+import DanmukuTree from './DanmukuTree';
+import AudioTree from './AudioTree';
+import './SelectModal.scss';
 /**
  * 广播剧音频选择树
  * @param param0
  * @param ref
  * @returns
  */
-const SelectTree = ({ onConfirmDm, onConfirmBc }: any, ref: any) => {
+const SelectModal = ({ onConfirmDm, onConfirmBc }: any, ref: any) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [dmKey, setDmKey] = useState<any>('');
   const [bcKey, setBcKey] = useState<any>('');
 
-  const dmTree = useRef<any>({});
-  const bcTree = useRef<any>({});
+  const danmukuTree = useRef<any>({});
+  const audioTree = useRef<any>({});
 
   useImperativeHandle(ref, () => ({
     show() {
       setIsModalOpen(true);
       setTimeout(() => {
-        dmTree.current?.setSelectedKeys?.([dmKey]);
-        bcTree.current?.setSelectedKeys?.([bcKey]);
+        danmukuTree.current?.setSelectedKeys?.([dmKey]);
+        audioTree.current?.setSelectedKeys?.([bcKey]);
       }, 100);
     },
     setDmKey,
@@ -31,7 +31,7 @@ const SelectTree = ({ onConfirmDm, onConfirmBc }: any, ref: any) => {
 
   // 选择弹幕后自动联动选择音频
   const handlerSelectDm = (node: any) => {
-    bcTree.current?.setCurrentDm(node.key);
+    audioTree.current?.setCurrentDm(node.key);
     setDmKey(node.key);
   };
 
@@ -70,10 +70,10 @@ const SelectTree = ({ onConfirmDm, onConfirmBc }: any, ref: any) => {
       width='1000px'
       forceRender
     >
-      <DmTree ref={dmTree} onSelect={handlerSelectDm} />
-      <BcTree ref={bcTree} onSelect={handlerSelectBc} />
+      <DanmukuTree ref={danmukuTree} onSelect={handlerSelectDm} />
+      <AudioTree ref={audioTree} onSelect={handlerSelectBc} />
     </Modal>
   );
 };
 
-export default forwardRef(SelectTree);
+export default forwardRef(SelectModal);

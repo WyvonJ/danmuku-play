@@ -10,7 +10,7 @@ import { InteractionTwoTone, RocketTwoTone } from '@ant-design/icons';
  * @param {*} ref
  * @return {*}
  */
-const DmTree = ({ onSelect }: any, ref: any) => {
+const DanmukuTree = ({ onSelect }: any, ref: any) => {
   const [treeData, setTreeData] = useState([]);
   const [selected, setSelected] = useState<any>(null);
   const treeRef = useRef<any>(null);
@@ -56,7 +56,7 @@ const DmTree = ({ onSelect }: any, ref: any) => {
   }, []);
 
   return (
-    <div className='dm-tree'>
+    <div className='danmuku-tree'>
       <div className='tree-header'>
         <Tag color='red' icon={<RocketTwoTone />}>
           弹幕
@@ -96,4 +96,4 @@ const DmTree = ({ onSelect }: any, ref: any) => {
   );
 };
 
-export default forwardRef(DmTree);
+export default forwardRef(DanmukuTree);

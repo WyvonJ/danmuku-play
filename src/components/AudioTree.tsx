@@ -11,7 +11,7 @@ import { replaceCnNums } from '../utils/compare';
  * @param ref
  * @returns
  */
-const BcTree = ({ onSelect }: any, ref: any) => {
+const AudioTree = ({ onSelect }: any, ref: any) => {
   const [treeData, setTreeData] = useState([]);
   const [selectedKeys, setSelectedKeys] = useState<string[]>([]);
   const [expandedKeys, setExpandedKeys] = useState<string[]>([]);
@@ -108,7 +108,7 @@ const BcTree = ({ onSelect }: any, ref: any) => {
   }, []);
 
   return (
-    <div className='bc-tree'>
+    <div className='audio-tree'>
       <div className='tree-header'>
         <Tag color='red' icon={<CustomerServiceTwoTone />}>
           音频
@@ -142,4 +142,4 @@ const BcTree = ({ onSelect }: any, ref: any) => {
   );
 };
 
-export default forwardRef(BcTree);
+export default forwardRef(AudioTree);

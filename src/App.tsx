@@ -5,15 +5,13 @@ import './App.scss';
 import axios from 'axios';
 import {
   PlayCircleTwoTone,
-  CustomerServiceTwoTone,
   RocketTwoTone,
   setTwoToneColor,
   SoundTwoTone,
 } from '@ant-design/icons';
 import { baseUrl } from './config';
 import { CommentManager, CommentProvider, BilibiliFormat } from './utils/CommentCoreLibrary';
-import SelectTree from './components/SelectTree';
-import { fillZero } from './utils/compare';
+import SelectModal from './components/SelectModal';
 message.config({
   maxCount: 1,
 });
@@ -24,7 +22,7 @@ function App() {
   const canvas = useRef<any>({});
   const cm = useRef<any>({});
   const audioRef = useRef<HTMLAudioElement>(null);
-  const selectTree = useRef<any>({});
+  const selectModal = useRef<any>({});
 
   const [audioTitle, setAudioTitle] = useState('');
   const [audioUrl, setAudioUrl] = useState('');
@@ -49,7 +47,7 @@ function App() {
     cp.start().catch((e: any) => {
       console.log(e);
     });
-    selectTree?.current?.setDmKey(node.key);
+    selectModal?.current?.setDmKey(node.key);
     // getBroadcastInfo(node.key.split('/')[0]);
     getEpisideInfo(node);
   };
@@ -65,7 +63,7 @@ function App() {
     localStorage.setItem('audio_key', node.key);
     setAudioUrl(broadcastUrl);
     setAudioTitle(node.key.split('/').filter(Boolean).join(' - '));
-    selectTree.current?.setBcKey(node.key);
+    selectModal.current?.setBcKey(node.key);
   };
 
   const getEpisideInfo = async (node: any) => {
@@ -232,7 +230,7 @@ function App() {
             ghost
             danger
             onClick={() => {
-              selectTree.current.show();
+              selectModal.current.show();
             }}
             title='弹幕'
           >
@@ -244,7 +242,7 @@ function App() {
             danger
             title='音频'
             onClick={() => {
-              bcTree.current.show();
+              audioTree.current.show();
             }}
           >
             <CustomerServiceTwoTone style={{ fontSize: 16 }} />
@@ -274,7 +272,7 @@ function App() {
         ></audio>
       </div>
 
-      <SelectTree ref={selectTree} onConfirmDm={handlerConfirmDm} onConfirmBc={handlerConfirmBc} />
+      <SelectModal ref={selectModal} onConfirmDm={handlerConfirmDm} onConfirmBc={handlerConfirmBc} />
     </div>
   );
 }
