@@ -70,7 +70,11 @@ const SelectModal = ({ onConfirmDm, onConfirmBc }: any, ref: any) => {
       width='1000px'
       forceRender
     >
-      <DanmukuTree ref={danmukuTree} onSelect={handlerSelectDm} />
+      <DanmukuTree ref={danmukuTree} onSearchChange={(v: string) => {
+        if(audioTree?.current) {
+          audioTree.current.setSearchValue(v)
+        }
+      }} onSelect={handlerSelectDm} />
       <AudioTree ref={audioTree} onSelect={handlerSelectBc} />
     </Modal>
   );

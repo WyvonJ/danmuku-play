@@ -45,7 +45,9 @@ const AudioTree = ({ onSelect }: any, ref: any) => {
 
   useImperativeHandle(ref, () => ({
     setSelectedKeys: handlerSelectedKeys,
-
+    setSearchValue(v: string) {
+      setSearchValue(v)
+    },
     getSelected() {
       return selected;
     },

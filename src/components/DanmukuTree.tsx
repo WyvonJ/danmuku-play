@@ -10,7 +10,7 @@ import { InteractionTwoTone, RocketTwoTone } from '@ant-design/icons';
  * @param {*} ref
  * @return {*}
  */
-const DanmukuTree = ({ onSelect }: any, ref: any) => {
+const DanmukuTree = ({ onSelect, onSearchChange }: any, ref: any) => {
   const [treeData, setTreeData] = useState([]);
   const [selected, setSelected] = useState<any>(null);
   const treeRef = useRef<any>(null);
@@ -69,6 +69,7 @@ const DanmukuTree = ({ onSelect }: any, ref: any) => {
           value={searchValue}
           onChange={(v) => {
             setSearchValue(v.target.value);
+            onSearchChange(v.target.value);
           }}
           style={{ marginRight: 6 }}
         />
