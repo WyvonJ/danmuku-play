@@ -17,10 +17,15 @@
 
     .tree-header {
       display: flex;
-      justify-content:space-between;
+      justify-content: space-between;
       align-items: center;
       border-bottom: 1px solid #686868;
       padding-bottom: 8px;
     }
+  }
+
+  :where(.css-dev-only-do-not-override-1nrbrdb).ant-tree .ant-tree-node-content-wrapper:hover,
+  :where(.css-dev-only-do-not-override-1nrbrdb).ant-tree .ant-tree-checkbox + span:hover {
+    background-color: #bc44446f;
   }
 }

@@ -12,7 +12,7 @@ export function chineseToNumber(chnStr: string) {
     亿: { value: 100000000, secUnit: true },
   };
   //增加‘两’的对象，解决“两百零一”等数字的转换问题
-  let chnNumChar :any= {
+  let chnNumChar: any = {
     零: 0,
     一: 1,
     二: 2,
@@ -73,7 +73,6 @@ export function replaceCnNums(str: string) {
   }
 }
 
- 
 export function fillZero(str: any, count = 2) {
   return `0${str}`.slice(-count);
 }

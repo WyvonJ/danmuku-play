@@ -1,0 +1,12 @@
+.setting-modal {
+  .setting-item {
+    display: flex;
+    align-items: center;
+    &__label {
+      width: 60px;
+    }
+    &__value {
+      width: calc(100% - 60px);
+    }
+  }
+}

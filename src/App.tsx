@@ -3,15 +3,11 @@ import 'comment-core-library';
 import { Button, Carousel, Tag, message } from 'antd';
 import './App.scss';
 import axios from 'axios';
-import {
-  PlayCircleTwoTone,
-  RocketTwoTone,
-  setTwoToneColor,
-  SoundTwoTone,
-} from '@ant-design/icons';
+import { PlayCircleTwoTone, RocketTwoTone, SettingTwoTone, setTwoToneColor, SoundTwoTone } from '@ant-design/icons';
 import { baseUrl } from './config';
 import { CommentManager, CommentProvider, BilibiliFormat } from './utils/CommentCoreLibrary';
 import SelectModal from './components/SelectModal';
+import SettingModal from './components/SettingModal';
 message.config({
   maxCount: 1,
 });
@@ -62,7 +58,13 @@ function App() {
     const broadcastUrl = `${baseUrl}/audio/data/${encodeURIComponent(node.key)}`;
     localStorage.setItem('audio_key', node.key);
     setAudioUrl(broadcastUrl);
-    setAudioTitle(node.key.split('/').filter(Boolean).join(' - '));
+    // title 设置为缩略展示
+    let title = node.key.split('/').filter(Boolean).join(' - ');
+    if (title.length > 25) {
+      const sliceLength = Math.floor( (title.length - 16) / 2);
+      title = title.slice(0, sliceLength) + '...' + title.slice(title.length - sliceLength, title.length) 
+    }
+    setAudioTitle(title);
     selectModal.current?.setBcKey(node.key);
   };
 
@@ -126,6 +128,7 @@ function App() {
     audioPlayer.currentTime = 0;
     handlerPlay();
   };
+
 
   const handlerAudioPlay = (e: any) => {
     startDisplayingDanmuku();
@@ -257,9 +260,13 @@ function App() {
             <Tag color='red'>{audioTitle}</Tag>
           </div>
         )}
-        <Tag icon={<SoundTwoTone />} color='red'>
-          {(volume * 100).toFixed(0)}
-        </Tag>
+
+        <div>
+          <Tag icon={<SoundTwoTone />} color='red'>
+            {(volume * 100).toFixed(0)}
+          </Tag>
+          <SettingModal/>
+        </div>
 
         <audio
           onVolumeChange={handlerVolumeChange}

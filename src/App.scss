@@ -61,7 +61,7 @@
     }
     .audio-title {
       font-size: 13px;
-      max-width: 360px;
+      max-width: 260px;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
@@ -95,8 +95,8 @@
   }
 
   audio {
-    width: calc(100% - 400px);
-    max-width: 1000px;
+    width: calc(100% - 500px);
+    max-width: 900px;
     height: 44px;
   }
 }

@@ -1,5 +1,5 @@
-import { Tree, Tag, Button } from 'antd';
-import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
+import { Tree, Tag, Button, Input } from 'antd';
+import { forwardRef, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react';
 import axios from 'axios';
 import { baseUrl } from '../config';
 import { CustomerServiceTwoTone, InteractionTwoTone } from '@ant-design/icons';
@@ -16,8 +16,13 @@ const AudioTree = ({ onSelect }: any, ref: any) => {
   const [selectedKeys, setSelectedKeys] = useState<string[]>([]);
   const [expandedKeys, setExpandedKeys] = useState<string[]>([]);
   const treeRef = useRef<any>(null);
+  const [searchValue, setSearchValue] = useState('');
 
   const [selected, setSelected] = useState<any>(null);
+
+  const filteredData = useMemo(() => {
+    return treeData.filter((item: any) => item.title.includes(searchValue));
+  }, [treeData, searchValue]);
 
   const handlerSelectedKeys = ([key]: string[]) => {
     const keys = key.split('/');
@@ -113,6 +118,13 @@ const AudioTree = ({ onSelect }: any, ref: any) => {
         <Tag color='red' icon={<CustomerServiceTwoTone />}>
           音频
         </Tag>
+        <Input
+          value={searchValue}
+          onChange={(v) => {
+            setSearchValue(v.target.value);
+          }}
+          style={{ marginRight: 6 }}
+        />
         <Button
           title='刷新'
           shape='circle'
@@ -128,7 +140,7 @@ const AudioTree = ({ onSelect }: any, ref: any) => {
         selectedKeys={selectedKeys}
         height={500}
         showLine
-        treeData={treeData}
+        treeData={filteredData}
         onExpand={(keys: any) => {
           setExpandedKeys(keys);
         }}

@@ -1,5 +1,5 @@
-import { Tree, Tag, Button } from 'antd';
-import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
+import { Tree, Tag, Button, Input } from 'antd';
+import { forwardRef, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react';
 import axios from 'axios';
 import { baseUrl } from '../config';
 import { InteractionTwoTone, RocketTwoTone } from '@ant-design/icons';
@@ -17,7 +17,7 @@ const DanmukuTree = ({ onSelect }: any, ref: any) => {
   const [selectedKeys, setSelectedKeys] = useState<string[]>([]);
 
   const [expandedKeys, setExpandedKeys] = useState<string[]>([]);
-  // const [searchValue, setSearchValue] = useState('');
+  const [searchValue, setSearchValue] = useState('');
 
   useImperativeHandle(ref, () => ({
     setSelectedKeys([key]: string[]) {
@@ -51,6 +51,10 @@ const DanmukuTree = ({ onSelect }: any, ref: any) => {
     setTreeData(data.data);
   };
 
+  const filteredData = useMemo(() => {
+    return treeData.filter((item: any) => item.title.includes(searchValue));
+  }, [treeData, searchValue]);
+
   useEffect(() => {
     getTreeData();
   }, []);
@@ -61,8 +65,15 @@ const DanmukuTree = ({ onSelect }: any, ref: any) => {
         <Tag color='red' icon={<RocketTwoTone />}>
           弹幕
         </Tag>
+        <Input
+          value={searchValue}
+          onChange={(v) => {
+            setSearchValue(v.target.value);
+          }}
+          style={{ marginRight: 6 }}
+        />
         <Button
-        title='刷新'
+          title='刷新'
           shape='circle'
           icon={<InteractionTwoTone />}
           onClick={() => {
@@ -70,19 +81,14 @@ const DanmukuTree = ({ onSelect }: any, ref: any) => {
           }}
         ></Button>
       </div>
-      {/* <Input
-        value={searchValue}
-        onChange={(v) => {
-          setSearchValue(v.target.value);
-        }}
-      /> */}
+
       <Tree
         ref={treeRef}
         selectedKeys={selectedKeys}
         expandedKeys={expandedKeys}
         height={500}
         showLine
-        treeData={treeData}
+        treeData={filteredData}
         onExpand={(keys: any) => {
           setExpandedKeys(keys);
         }}
