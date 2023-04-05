@@ -150,6 +150,7 @@ const AudioTree = ({ onSelect }: any, ref: any) => {
           const selected = info.selected ? info.node : null;
           setSelected(selected);
           if (selected && !selected.children?.length) onSelect(selected);
+          setSelectedKeys([selected?.key].filter(Boolean));
         }}
       />
     </div>
