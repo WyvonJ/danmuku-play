@@ -63,7 +63,12 @@ const SettingModal = (_: any, ref: any) => {
       setFontSize(+fontSize);
     }
     if (fontFamily || fontSize) {
-      handleOk()
+      setStyles(`
+      #root .app .cmt {
+        font-family: "${fontFamily || 'PingFang TC'}";
+        font-size: ${fontSize || 20}px!important;
+      }
+      `);
     }
   }, []);
 
