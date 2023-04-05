@@ -111,7 +111,7 @@ const SettingModal = (_: any, ref: any) => {
             <Tag color='red'>字体</Tag>
           </div>
           <div className='setting-item__value'>
-            <Select style={{ width: 120 }} onChange={handlerChangeFontFamily} options={fontOptions} />
+            <Select value={fontFamily} style={{ width: 120 }} onChange={handlerChangeFontFamily} options={fontOptions} />
           </div>
         </div>
       </Modal>
