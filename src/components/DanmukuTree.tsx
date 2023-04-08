@@ -1,4 +1,4 @@
-import { Tree, Tag, Button, Input } from 'antd';
+import { Tree, Tag, Button, Input, message } from 'antd';
 import { forwardRef, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react';
 import axios from 'axios';
 import { baseUrl } from '../config';
@@ -43,12 +43,16 @@ const DanmukuTree = ({ onSelect, onSearchChange }: any, ref: any) => {
   }));
 
   const getTreeData = async (refresh?: string) => {
+    if (refresh) {
+      message.loading('正在刷新弹幕列表', 5000);
+    }
+    setTreeData([]);
     const { data } = await axios.get(`${baseUrl}/danmuku/list`, {
       params: {
         refresh,
       },
     });
-    
+
     setTreeData(data.data);
   };
 

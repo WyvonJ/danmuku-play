@@ -1,4 +1,4 @@
-import { Button, Modal, Select, Slider, Tag } from 'antd';
+import { Button, InputNumber, Modal, Select, Slider, Tag } from 'antd';
 import { forwardRef, useEffect, useImperativeHandle, useState } from 'react';
 import { SettingTwoTone } from '@ant-design/icons';
 import './SettingModal.scss';

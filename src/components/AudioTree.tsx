@@ -1,4 +1,4 @@
-import { Tree, Tag, Button, Input } from 'antd';
+import { Tree, Tag, Button, Input, message } from 'antd';
 import { forwardRef, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react';
 import axios from 'axios';
 import { baseUrl } from '../config';
@@ -102,6 +102,9 @@ const AudioTree = ({ onSelect }: any, ref: any) => {
 
   const getTreeData = async (refresh?: string) => {
     setTreeData([]);
+    if (refresh) {
+      message.loading('正在刷新音频列表', 5000);
+    }
     const { data } = await axios.get(`${baseUrl}/audio/list`, {
       params: {
         refresh,

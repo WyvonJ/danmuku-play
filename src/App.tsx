@@ -261,7 +261,7 @@ function App() {
           </div>
         )}
 
-        <div>
+        <div className='audio-volume'>
           <Tag icon={<SoundTwoTone />} color='red'>
             {(volume * 100).toFixed(0)}
           </Tag>
