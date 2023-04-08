@@ -2,6 +2,52 @@
   width: 100%;
   height: 100%;
 }
+
+@font-face {
+  font-family: "Source Han Serif TC";
+  src: url('http://192.168.3.79:3050/font/SourceHanSerifSC-Regular.otf');
+}
+
+@font-face {
+  font-family: "Source Han Serif TC Medium";
+  src: url('http://192.168.3.79:3050/font/SourceHanSerifTC-Medium.otf');
+}
+
+@font-face {
+  font-family: "Source Han Serif TC Bold";
+  src: url('http://192.168.3.79:3050/font/SourceHanSerifTC-Bold.otf');
+}
+
+@font-face {
+  font-family: "HYChangLiSongKeBenTruingW";
+  src: url('http://192.168.3.79:3050/font/汉仪昌黎宋刻本 W.ttf');
+}
+
+@font-face {
+  font-family: "PingXiamYaSong";
+  src: url('http://192.168.3.79:3050/font/汉仪屏显雅宋.ttf');
+}
+
+@font-face {
+  font-family: "XiaWuWenKai";
+  src: url('http://192.168.3.79:3050/font/霞鹜文楷-Regular.ttf');
+}
+
+@font-face {
+  font-family: "FZBWKSK--GBK1-0";
+  src: url('http://192.168.3.79:3050/font/方正北魏楷书.ttf');
+}
+
+@font-face {
+  font-family: "RuiZiYunZiKuZhunYuanTiGBK-1";
+  src: url('http://192.168.3.79:3050/font/RuiZiYunZiKuZhunYuanTiGBK-1.ttf');
+}
+
+@font-face {
+  font-family: "RuiZiYunZiKuLiBianTiGBK-1";
+  src: url('http://192.168.3.79:3050/font/RuiZiYunZiKuLiBianTiGBK-1.ttf');
+}
+
 .app {
   width: 100%;
   height: 100%;

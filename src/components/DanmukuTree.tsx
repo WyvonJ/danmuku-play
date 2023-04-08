@@ -48,6 +48,7 @@ const DanmukuTree = ({ onSelect, onSearchChange }: any, ref: any) => {
         refresh,
       },
     });
+    
     setTreeData(data.data);
   };
 

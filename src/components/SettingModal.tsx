@@ -5,13 +5,15 @@ import './SettingModal.scss';
 
 const fontOptions = [
   { value: 'PingFang TC', label: '苹方' },
-  { value: 'Source Han Serif TC', label: '思源宋体' },
+  { value: 'Source Han Serif TC', label: '思源宋体TC' },
+  { value: 'Source Han Serif TC Medium', label: '思源宋体TC 中黑' },
+  { value: 'Source Han Serif TC Bold', label: '思源宋体TC 粗' },
   { value: 'HYChangLiSongKeBenTruingW', label: '汉仪昌黎宋刻本' },
+  { value: 'RuiZiYunZiKuZhunYuanTiGBK-1', label: '锐字云字库准圆体' },
+  { value: 'PingXiamYaSong', label: '汉仪屏显雅宋' },
+  { value: 'XiaWuWenKai', label: '霞鹜文楷' },
   { value: 'FZBWKSK--GBK1-0', label: '方正北魏楷书' },
-  { value: 'STFangsong', label: '华文仿宋' },
-  { value: 'STLibianTC-Regular', label: '隶变-繁' },
-  { value: 'Yuanti TC', label: '圆体' },
-  { value: 'Kaiti TC', label: '楷体' },
+  { value: 'RuiZiYunZiKuLiBianTiGBK-1', label: '锐字云字库隶变体' },
 ];
 
 /**
@@ -94,7 +96,7 @@ const SettingModal = (_: any, ref: any) => {
         onOk={handleOk}
         onCancel={handleCancel}
         className='setting-modal'
-        width='400px'
+        width='500px'
         forceRender
       >
         <div style={{ fontFamily, fontSize }}>测试字体</div>
@@ -111,7 +113,7 @@ const SettingModal = (_: any, ref: any) => {
             <Tag color='red'>字体</Tag>
           </div>
           <div className='setting-item__value'>
-            <Select value={fontFamily} style={{ width: 120 }} onChange={handlerChangeFontFamily} options={fontOptions} />
+            <Select value={fontFamily} style={{ width: 300 }} onChange={handlerChangeFontFamily} options={fontOptions} />
           </div>
         </div>
       </Modal>
