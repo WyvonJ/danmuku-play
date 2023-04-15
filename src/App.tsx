@@ -3,7 +3,7 @@ import 'comment-core-library';
 import { Button, Carousel, Tag, message } from 'antd';
 import './App.scss';
 import axios from 'axios';
-import { PlayCircleTwoTone, RocketTwoTone, SettingTwoTone, setTwoToneColor, SoundTwoTone } from '@ant-design/icons';
+import { FullscreenOutlined, PlayCircleTwoTone, RocketTwoTone, SettingTwoTone, setTwoToneColor, SoundTwoTone } from '@ant-design/icons';
 import { baseUrl } from './config';
 import { CommentManager, CommentProvider, BilibiliFormat } from './utils/CommentCoreLibrary';
 import SelectModal from './components/SelectModal';
@@ -61,8 +61,8 @@ function App() {
     // title 设置为缩略展示
     let title = node.key.split('/').filter(Boolean).join(' - ');
     if (title.length > 25) {
-      const sliceLength = Math.floor( (title.length - 16) / 2);
-      title = title.slice(0, sliceLength) + '...' + title.slice(title.length - sliceLength, title.length) 
+      const sliceLength = Math.floor((title.length - 16) / 2);
+      title = title.slice(0, sliceLength) + '...' + title.slice(title.length - sliceLength, title.length);
     }
     setAudioTitle(title);
     selectModal.current?.setBcKey(node.key);
@@ -128,7 +128,6 @@ function App() {
     audioPlayer.currentTime = 0;
     handlerPlay();
   };
-
 
   const handlerAudioPlay = (e: any) => {
     startDisplayingDanmuku();
@@ -265,7 +264,22 @@ function App() {
           <Tag icon={<SoundTwoTone />} color='red'>
             {(volume * 100).toFixed(0)}
           </Tag>
-          <SettingModal/>
+          <SettingModal />
+
+          <Button
+            ghost
+            danger
+            shape='circle'
+            icon={<FullscreenOutlined />}
+            title='全屏'
+            onClick={() => {
+              if (document.fullscreenElement) {
+                document.exitFullscreen();
+              } else {
+                document.body.requestFullscreen();
+              }
+            }}
+          ></Button>
         </div>
 
         <audio
